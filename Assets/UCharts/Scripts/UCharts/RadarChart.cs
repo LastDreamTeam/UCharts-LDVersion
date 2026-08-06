@@ -1,4 +1,4 @@
-ï»¿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +20,7 @@ namespace UCharts
 		[SerializeField] private float m_Size = 0;
 
 		[SerializeField] private Color32 m_Color0, m_Color1, m_BorderColor;
+		// AI: 数据多边形主色，Inspector 中单独显示
 		[SerializeField] private Color32 m_DataColor = new Color32(244, 12, 12, 100);
 
 		[SerializeField] List<RadarChartIndicator> m_Indicators = new List<RadarChartIndicator>();

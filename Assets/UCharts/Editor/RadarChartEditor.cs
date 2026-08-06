@@ -12,7 +12,7 @@ namespace UCharts
 	public class RadarChartEditor : GraphicEditor
     {
 
-		SerializedProperty  m_Sides, m_Color0, m_Color1, m_BorderColor;
+		SerializedProperty  m_Sides, m_Color0, m_Color1, m_BorderColor, m_DataColor;
 		
 		ReorderableList m_Indicators, m_Data;
 		protected override void OnEnable()
@@ -22,6 +22,7 @@ namespace UCharts
 			m_Color0           = serializedObject.FindProperty("m_Color0");
 			m_Color1           = serializedObject.FindProperty("m_Color1");
 			m_BorderColor      = serializedObject.FindProperty("m_BorderColor");
+			m_DataColor        = serializedObject.FindProperty("m_DataColor"); // AI: 数据多边形主色
 
 			m_Indicators       = new ReorderableList(serializedObject, 
 									serializedObject.FindProperty("m_Indicators"),
@@ -81,10 +82,11 @@ namespace UCharts
 			EditorGUILayout.PropertyField(m_Color0);
 			EditorGUILayout.PropertyField(m_Color1);
 			EditorGUILayout.PropertyField(m_BorderColor);
+			EditorGUILayout.PropertyField(m_DataColor); // AI: 数据多边形主色
 
 			var sides = m_Sides.intValue;
 
-            RaycastControlsGUI();
+			RaycastControlsGUI();
             NativeSizeButtonGUI();
 
             serializedObject.ApplyModifiedProperties();
