@@ -2,7 +2,13 @@
 
 LastDreamTeam 维护的 Unity UGUI 图表，从 [iMemento/UCharts](https://github.com/iMemento/UCharts) 整理而来。在 Canvas 上画雷达图、环形饼图和半环图，源码在 `Assets/UCharts`。
 
-用 **Unity 2022.3.60f1** 打开本仓库。下面两张是上游演示，不是本分支重新录的：
+## 先打开演示场景
+
+1. 在 Unity Hub 中将仓库根目录添加为项目，使用 [Unity 2022.3.60f1](ProjectSettings/ProjectVersion.txt) 打开。
+2. 在 Project 窗口打开 [DemoScene.unity](Assets/UCharts/DemoScene/DemoScene.unity)，按 Play 看图表展开。要把图表拖入自己的界面，从[预制件目录](Assets/UCharts/Prefabs)选一个，放在 Canvas 下。
+3. 选中雷达图，在 Inspector 调整 **Data Color**。数据多边形的填充色和网格的描边色可以分别设置。
+
+下面是上游演示，供识别图表类型。
 
 ![雷达图](https://raw.githubusercontent.com/iMemento/UCharts/master/Images/0.gif)
 ![饼图与半环](https://raw.githubusercontent.com/iMemento/UCharts/master/Images/1.gif)
@@ -15,7 +21,7 @@ LastDreamTeam 维护的 Unity UGUI 图表，从 [iMemento/UCharts](https://githu
 | 雷达数据颜色 | 写死 `new Color32(244, 12, 12, 100)` | Inspector 字段 `m_DataColor`，默认值不变 |
 | 脚本编码 | UTF-8 BOM | 已去掉 BOM |
 | `.gitignore` | 到 `Library/` 为止 | 补了 `Logs/`、`UserSettings/`、`.vs/`、`.vscode/` |
-| README、LICENSE、演示 GIF | 有 | 整理工程时没带过来 |
+| 文档与演示素材 | 含原版 README、LICENSE 和本地 GIF | 当前使用本仓 README；演示 GIF 引用上游，仓内未随附上游 LICENSE |
 
 `BarChart` 上下游都是空类，不能当功能用。
 
@@ -42,7 +48,7 @@ Assets/UCharts/
 
 ## 雷达图
 
-预制：`Assets/UCharts/Prefabs/RadarChart.prefab`。这是 Unity 5.5 的二进制预制，2022 一般还能导入。里面的示例轴是十二星座。
+预制：`Assets/UCharts/Prefabs/RadarChart.prefab`。这是旧版 Unity 的二进制预制；可用上面的演示场景检查导入与播放效果。里面的示例轴是十二星座。
 
 物体下必须有一个名为 `Text` 的 `UnityEngine.UI.Text`。`Awake` 里是 `transform.Find("Text").gameObject`，没有这个子物体会直接空引用。播放时按轴复制成 `Text0`、`Text1`……非播放模式不生成标签。
 
@@ -102,6 +108,10 @@ pie.SetData(new List<PieChartDataNode> {
 ## 柱状图
 
 `BarChart` 只有空的 `Start` / `Update`，没有网格。不要挂上去期待出图。
+
+## English — try the charts
+
+Open this repository as a Unity **2022.3.60f1** project, open the [demo scene](Assets/UCharts/DemoScene/DemoScene.unity), then press Play. To reuse a chart, place a radar, pie or half-pie [prefab](Assets/UCharts/Prefabs) under a Canvas in a project with UGUI. The radar fill color is editable in the Inspector. The bar chart is a placeholder.
 
 ## 来源
 
